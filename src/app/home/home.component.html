@@ -1,0 +1,35 @@
+<h1>welcome!</h1>
+<div class="play-container">
+    <!--click event binding (click) to a function -->
+    <!--interpolation {{clickCounter}} display a variable|property defined in Home component.ts  -->
+    <p>You've clicked <span (click)="countClick()">this</span> {{clickCounter}} times.</p>
+</div>
+<div class="play-container">
+    <p>
+        <input type="text"[(ngModel)]="name">
+        <br>
+        <strong>You said:</strong>{{ name }}
+    </p>
+</div>
+
+<!--Style binding by property binding-->
+<!--[style.background-color]="clickCounter > 4 ? 'rgb(111, 0, 255)' : 'lightgray'" after play-container-->
+<!--[ngStyle]="{
+    'background-color': clickCounter > 4 ? 'rgb(111, 0, 255)' : 'lightgray',
+    'border':           clickCounter > 4 ? '4px solid black' : 'none',
+    'color':            clickCounter > 4 ? 'white': 'black'
+
+}" after play-container(before '>'-->
+<!--[class.active]="clickCounter > 4" for adding class style defined in home.component.scss-->
+<div class="play-container" [ngClass]="setClasses()">
+    <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none">
+        <p>The click counter <strong>Is Greater</strong> than 4.</p>
+    </ng-template>
+
+    <!--here's the template that referers to ngIfElse="none"-->
+    <ng-template #none>
+        <p>The click counter is <strong>not Greater</strong> than 4.</p>
+    </ng-template>
+
+
+</div>

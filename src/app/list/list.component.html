@@ -1,0 +1,8 @@
+<h1>Birre! | Breweries!</h1>
+<ul *ngIf="dataFromApi">
+    <li *ngFor="let birra_dato of dataFromApi">
+        <p class="name">{{birra_dato.name}}</p>
+        <p class="country">{{birra_dato.country}}</p>
+        <a href="{{ birra_dato.website_url}}" class="site">site</a>
+    </li>
+</ul>
